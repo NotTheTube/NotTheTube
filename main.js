@@ -172,9 +172,13 @@ if(window.location.pathname.includes('watch'))
             firebaseRef = firebase.database().ref("watch/1/views")
             firebaseRef.once("value", function(snapshot) {
                 data = Math.round(snapshot.val() + 1)
+                var data2 = Math.round(snapshot.val().dislikes - 1)
+                var data3 = Math.round(snapshot.val().likes + 1)
                 database.ref("watch/1").set
                 ({
-                    views: data
+                    views: data,
+                    likes: data3,
+                    dislikes: data2,
                 })
             })
         }
